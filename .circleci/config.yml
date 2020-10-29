@@ -40,6 +40,11 @@ jobs:
           name: Start Server
           command: go run .
           background: true
+          
+      - run: curl -v https://127.0.0.1:8080/users/yaml
+      - run: sleep 10
+      - run: curl -v https://127.0.0.1:8080/users/yaml
+      - run: sleep 10 
       
       # - run:
       #     name: Stop Akita SuperLearn
