@@ -6,7 +6,7 @@ jobs:
   build:
     docker:
       # specify the version
-      - image: circleci/golang:1.9
+      - image: circleci/golang:1.13
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -40,7 +40,7 @@ jobs:
       # specify any bash command here prefixed with `run: `
       - run: ls -la
       - run: pwd
-      - run: go run main.go
+      - run: go run .
       
       - run:
           name: Stop Akita SuperLearn
