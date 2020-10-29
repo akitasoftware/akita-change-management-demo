@@ -29,11 +29,11 @@ jobs:
                         --env CIRCLE_BUILD_URL="${CIRCLE_BUILD_URL}" \
                         --env AKITA_API_KEY_ID=${AKITA_API_KEY_ID} \
                         --env AKITA_API_KEY_SECRET=${AKITA_API_KEY_SECRET} \
-                        --net {NET} \
+                        --net=host \
                         --name akita \
                         akitasoftware/cli:latest learn \
-                        --service {SERVICE} \
-                        --port {PORT}
+                        --service akita-change-management-demo \
+                        --port 8080
           background: true
 
       - run: 
