@@ -17,6 +17,11 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
+      
+      - run:
+          name: Get Akita SuperLearn
+          command: docker pull akitasoftware/cli:latest
+      
       - run:
           name: Run Akita SuperLearn
           command: | 
@@ -37,9 +42,6 @@ jobs:
                         --port {PORT}
           background: true
 
-      # specify any bash command here prefixed with `run: `
-      - run: ls -la
-      - run: pwd
       - run: 
           name: Start Server
           command: go run .
