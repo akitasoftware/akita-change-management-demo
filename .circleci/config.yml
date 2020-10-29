@@ -40,7 +40,7 @@ jobs:
       # specify any bash command here prefixed with `run: `
       - run: ls -la
       - run: pwd
-      - run: go run .
+      - run: go run main.go
       
       - run:
           name: Stop Akita SuperLearn
