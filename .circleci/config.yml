@@ -41,8 +41,8 @@ jobs:
           command: go run .
           background: true
           
-      - run: sleep 10
+      - run: sleep 30
       
-      # - run:
-      #     name: Stop Akita SuperLearn
-      #     command: docker kill --signal=SIGINT akita
+      - run:
+          name: Stop Akita SuperLearn
+          command: docker kill --signal=SIGINT akita
