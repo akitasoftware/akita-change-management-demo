@@ -34,15 +34,5 @@ func main() {
 		enc.Encode(myUsers)
 	})
 
-	// Let's say someone added a new endpoint to return YAML instead of JSON...
-	// what could possibly go wrong?
-	http.HandleFunc("/users/yaml", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "application/x-yaml")
-		w.WriteHeader(200)
-		enc := yaml.NewEncoder(w)
-		defer enc.Close()
-		enc.Encode(myUsers)
-	})
-
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
