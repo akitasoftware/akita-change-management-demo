@@ -1,6 +1,3 @@
-# Golang CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-go/ for more details
 version: 2
 jobs:
   build:
@@ -18,12 +15,12 @@ jobs:
             sudo apt-get install -y golang
       
       - run:
-          name: Get Akita SuperLearn
+          name: Get Akita Docker Image
           command: docker pull akitasoftware/cli:latest
       
       - run:
-          name: Run Akita SuperLearn
-          command: | 
+          name: Start Akita Client
+          command: |
                   docker run --rm -d \
                         --env CI="${CI}" \
                         --env CIRCLECI="${CIRCLECI}" \
@@ -42,19 +39,21 @@ jobs:
           background: true
 
       - run: 
-          name: Start Server
+          name: Start App Server
           command: go run .
           background: true
           
-      - run: sleep 10
+      - run: 
+          name: Wait for App Server and Akita to start
+          command: sleep 5
       
-      - run: curl -v http://127.0.0.1:8080/users/yaml
-      - run: curl -v http://127.0.0.1:8080/users/yaml
-      - run: curl -v http://127.0.0.1:8080/users/yaml
-      - run: curl -v http://127.0.0.1:8080/users/yaml
-      - run: curl -v http://127.0.0.1:8080/users/yaml
-      
-      - run: sleep 10
+      - run: 
+          name: Run Integration Tests
+          command: ./test/integration-test.sh
+        
+      - run:
+          name: Wait for Akita to build
+          command: sleep 5
       
       - run:
           name: Stop Akita SuperLearn
