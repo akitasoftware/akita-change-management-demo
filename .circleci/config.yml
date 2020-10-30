@@ -10,7 +10,6 @@ jobs:
     working_directory: /go/src/github.com/akitasoftware/akita-change-management-demo
     steps:
       - checkout
-      - setup_remote_docker
       
       - run:
           name: Install golang
