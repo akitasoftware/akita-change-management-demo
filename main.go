@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-
-	"gopkg.in/yaml.v2"
 )
 
 type User struct {
